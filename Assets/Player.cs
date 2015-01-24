@@ -2,6 +2,9 @@ using UnityEngine;
 using System.Collections;
 
 public abstract class Player : MonoBehaviour {
+
+	public CharacterControllerThirdPerson body;
+
 	public float health;
 	public int points;
 	public float coolDownTimeOne;
@@ -10,10 +13,15 @@ public abstract class Player : MonoBehaviour {
 	private float coolDownOneTimer;
 	private float coolDownTwoTimer;
 
+	public void dealDamage(float damage) {
+		this.health = this.health - damage;
+		if (this.health <= 0) {
+			//game over		
+		}
+	}
 
-
-	virtual void doSpecialOne() ;
-	virtual void doSpecialTwo() ;
+	public virtual void doSpecialOne() {} 
+	public virtual void doSpecialTwo() {} 
 
 
 }

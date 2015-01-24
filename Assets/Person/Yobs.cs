@@ -14,12 +14,12 @@ public class Yobs : Player {
 						
 	}
 
-	override void doSpecialOne () {
+	public override void doSpecialOne () {
 		//do magic
 		print ("do special one");
 	}
 
-	override void doSpecialTwo () {
+	public override void doSpecialTwo () {
 		//do other magic
 		print ("do special two");
 	}
