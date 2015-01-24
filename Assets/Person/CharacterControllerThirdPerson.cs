@@ -14,6 +14,10 @@ public class CharacterControllerThirdPerson : MonoBehaviour {
 	public float runMaxAnimationSpeed = 1F;
 	public float jumpAnimationSpeed = 1F;
 	public float landAnimationSpeed =1F;
+
+	public string horizontalInput;
+	public string verticalInput;
+	public string actionButton;
 	
 	private Animation _animation;
 	
@@ -135,8 +139,8 @@ public AnimationClip jumpPoseAnimation;
 		// Always orthogonal to the forward vector
 		Vector3 right= new Vector3(forward.z, 0, -forward.x);
 		
-		float v= Input.GetAxisRaw("Vertical");
-		float h= Input.GetAxisRaw("Horizontal");
+		float v= Input.GetAxisRaw(verticalInput);
+		float h= Input.GetAxisRaw(horizontalInput);
 		
 		// Are we moving backwards or looking backwards
 		if (v < -0.2f)
