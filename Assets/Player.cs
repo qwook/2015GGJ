@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-abstract class Player : MonoBehaviour {
+public abstract class Player : MonoBehaviour {
 	public float health;
 	public int points;
 	public float coolDownTimeOne;
@@ -12,8 +12,8 @@ abstract class Player : MonoBehaviour {
 
 
 
-	virtual void doSpecialOne() {};
-	virtual void doSpecialTwo() {};
+	virtual void doSpecialOne() ;
+	virtual void doSpecialTwo() ;
 
 
 }
