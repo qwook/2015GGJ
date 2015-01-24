@@ -4,6 +4,9 @@ using System.Collections;
 public class Yobs : Player {
 
 	void Update() {
+
+		base.Update ();
+
 		if (Input.GetButtonDown ("Action1")) {
 			doSpecialOne();
 		}

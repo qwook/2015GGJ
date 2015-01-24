@@ -24,4 +24,9 @@ public abstract class Player : MonoBehaviour {
 	public virtual void doSpecialTwo() {} 
 
 
+	void Update() {
+
+	}
+
+
 }
