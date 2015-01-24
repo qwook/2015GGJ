@@ -19,12 +19,16 @@ public abstract class Player : MonoBehaviour {
 			//game over		
 		}
 	}
+	
 
 	public virtual void doSpecialOne() {} 
 	public virtual void doSpecialTwo() {} 
 
+	void Initialize() {
 
-	void Update() {
+	}
+
+	public void Update() {
 
 	}
 

@@ -19,6 +19,7 @@ public class Yobs : Player {
 
 	public override void doSpecialOne () {
 		//do magic
+
 		print ("do special one");
 	}
 
