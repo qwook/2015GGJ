@@ -7,13 +7,7 @@ public class Yobs : Player {
 
 		base.Update ();
 
-		if (Input.GetButtonDown ("Action1")) {
-			doSpecialOne();
-		}
 
-		if (Input.GetButtonDown ("Action2")) {
-			doSpecialTwo();
-		}
 						
 	}
 
