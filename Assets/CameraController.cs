@@ -18,8 +18,8 @@ public class CameraController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Vector3 newMin = ((P1.transform.localPosition.z < P2.transform.localPosition.z) ? P1.transform.localPosition : P2.transform.localPosition);
-		if (newMin.z >= this.transform.localPosition.z + 10) {
-			Vector3 newPos = new Vector3 (0f, 0f, 0.1f);
+		if (newMin.z >= this.transform.localPosition.z + 20) {
+			Vector3 newPos = new Vector3 (0f, 0f, 0.05f);
 			this.transform.localPosition += newPos;
 
 				
