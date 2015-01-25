@@ -4,6 +4,8 @@ using System.Collections;
 public class PlayerControllerFister : MonoBehaviour {
 	
 	public Camera camera;
+	public float points;
+	
 
 	//input 
 	public string horizontalAxis;
@@ -46,14 +48,18 @@ public class PlayerControllerFister : MonoBehaviour {
 
 
 
-		float verticalAmount = Input.GetAxis (horizontalAxis);
-		float horizontalAmount = -Input.GetAxis (verticalAxis);
+		float zAmount = Input.GetAxis (horizontalAxis);
+		float xAmount = -Input.GetAxis (verticalAxis);
 
-		if (verticalAmount != 0 || horizontalAmount != 0) {
-			transform.rotation = Quaternion.LookRotation (((Vector3.forward * verticalAmount)+(Vector3.right * horizontalAmount)));
+		if (zAmount < 0 && (this.transform.position.z < camera.transform.position.z - 15)) {
+			zAmount = 0;
 		}
 
-		if (Mathf.Abs (verticalAmount) > 0) {
+		if (zAmount != 0 || xAmount != 0) {
+			transform.rotation = Quaternion.LookRotation (((Vector3.forward * zAmount)+(Vector3.right * xAmount)));
+		}
+
+		if (Mathf.Abs (zAmount) > 0) {
 			if (forwardSpeed < 1.0f) {
 				forwardSpeed += Time.fixedDeltaTime;
 			} else {
@@ -67,7 +73,7 @@ public class PlayerControllerFister : MonoBehaviour {
 			}
 		}
 
-		if (Mathf.Abs (horizontalAmount) > 0) {
+		if (Mathf.Abs (xAmount) > 0) {
 			if (sideSpeed < 1.0f) {
 				sideSpeed += Time.fixedDeltaTime;
 			} else {
@@ -123,16 +129,32 @@ public class PlayerControllerFister : MonoBehaviour {
 		RaycastHit hit;;
 		Vector3 direction = transform.rotation * Vector3.forward;
 		int mask = 1 << 8;
-		print (direction + " " + direction);
+//		print (direction + " " + direction);
 		Debug.DrawRay(transform.position + punchHeight, direction * punchLength, Color.red, 3f);
 		if (Physics.Raycast (transform.position + punchHeight, direction, out hit, punchLength, mask)) {
 
-			print ("hit");		
+			Damagable damage = hit.collider.gameObject.GetComponent<Damagable> ();
+			addPoints(damage.dealDamage(100));
+			return true;
 		} else {
-			print ("didn't hit");
+			return false;
 		}
-//		print (hit);
-		return true;
+
+
+	}
+
+	public void addPoints(float moarPoints) {
+		this.points += moarPoints;
+
+	}
+
+	public void subtractPoints( float lessPoints) {
+
+
+	}
+	public float getPoints() {
+
+		return this.points;
 	}
 
 	private void updateTimers() {
