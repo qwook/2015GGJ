@@ -115,7 +115,7 @@ public class PlayerControllerFister : MonoBehaviour {
 		} else {
 			animator.SetBool ("Punch2", false);
 		}
-		
+		animator.SetBool ("Hit", Input.GetKey ("f"));
 	}
 	
 
