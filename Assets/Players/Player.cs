@@ -5,10 +5,24 @@ public abstract class Player : MonoBehaviour {
 	
 	public CharacterControllerThirdPerson body;
 	
-	public float health;
-	public int points;
+	public Camera camera;
+	
+	//input 
+	public string horizontalAxis;
+	public string verticalAxis;
+	public string action1;
+	public string action2;
+	
+	//cooldown between hits
 	public float coolDownTimeOne;
 	public float coolDownTimeTwo;
+	
+	//initial health / points
+	public float health;
+	public int points;
+	
+	//how far in front should we detect collision
+	public float punchLength;
 	
 	private float coolDownOneTimer;
 	private float coolDownTwoTimer;
@@ -28,13 +42,14 @@ public abstract class Player : MonoBehaviour {
 	}
 
 	public void Update() {
+
 		updateTimers ();
 		if (Input.GetButtonDown ("Action1")) {
 			if (coolDownOneTimer >= coolDownTimeOne) {
 				doSpecialOne();	
 				coolDownOneTimer = 0;
 			}
-
+			
 		}
 		
 		if (Input.GetButtonDown ("Action2")) {
