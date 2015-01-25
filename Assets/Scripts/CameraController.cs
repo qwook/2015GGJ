@@ -13,7 +13,7 @@ public class CameraController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		this.transform.localPosition = initialPosition;
+//		this.transform.localPosition = initialPosition;
 	}
 	
 	// Update is called once per frame

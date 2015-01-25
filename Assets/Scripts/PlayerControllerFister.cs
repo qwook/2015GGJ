@@ -51,7 +51,7 @@ public class PlayerControllerFister : MonoBehaviour {
 		float zAmount = Input.GetAxis (horizontalAxis);
 		float xAmount = -Input.GetAxis (verticalAxis);
 
-		if (zAmount < 0 && (this.transform.position.z < camera.transform.position.z - 15)) {
+		if (zAmount < 0 && (this.transform.position.z < camera.transform.position.z - 60)) {
 			zAmount = 0;
 		}
 
@@ -131,7 +131,9 @@ public class PlayerControllerFister : MonoBehaviour {
 		int mask = 1 << 8;
 //		print (direction + " " + direction);
 		Debug.DrawRay(transform.position + punchHeight, direction * punchLength, Color.red, 3f);
-		if (Physics.Raycast (transform.position + punchHeight, direction, out hit, punchLength, mask)) {
+		;
+
+		if (Physics.SphereCast (transform.position + punchHeight, 10, direction, out hit, punchLength, mask)) {
 
 			Damagable damage = hit.collider.gameObject.GetComponent<Damagable> ();
 			addPoints(damage.dealDamage(100));

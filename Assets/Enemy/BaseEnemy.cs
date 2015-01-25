@@ -6,6 +6,8 @@ public class BaseEnemy : MonoBehaviour {
 	public int punchingDistance;
 	public int activateDistance;
 	public float movementSpeed;
+	public int slowDownDistance;
+	public float slowDownSpeed;
 
 	//cooldown between hits
 	public float coolDownTimeOne;
@@ -72,8 +74,12 @@ public class BaseEnemy : MonoBehaviour {
 			activated = true;
 			print ("activated");
 			transform.rotation = Quaternion.LookRotation (towardsTarget);
-			if(towardsTarget.sqrMagnitude > 20) {
-				animator.SetFloat ("Speed", movementSpeed);
+			if(towardsTarget.sqrMagnitude > 40) {
+				if(towardsTarget.sqrMagnitude > slowDownDistance){
+					animator.SetFloat ("Speed", slowDownSpeed);
+				} else {
+					animator.SetFloat ("Speed", movementSpeed);
+				}
 			}
 
 		}
@@ -114,7 +120,7 @@ public class BaseEnemy : MonoBehaviour {
 	bool traceHit() {
 		RaycastHit hit;;
 		Vector3 direction = transform.rotation * Vector3.forward;
-		int mask = 1 << 8;
+		int mask = 1 << 9;
 //		print (direction + " " + direction);
 		Debug.DrawRay(transform.position + punchHeight, direction * punchLength, Color.red, 3f);
 		if (Physics.Raycast (transform.position + punchHeight, direction, out hit, punchLength, mask)) {
