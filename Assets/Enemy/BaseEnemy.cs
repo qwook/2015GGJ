@@ -45,7 +45,7 @@ public class BaseEnemy : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-
+		if (GetComponent<Damagable> ().dead) { return; }
 		targets = GameObject.FindGameObjectsWithTag ("Player");
 
 		if (targets.Length >= 1) {
@@ -69,7 +69,7 @@ public class BaseEnemy : MonoBehaviour {
 
 		} else {
 			activated = true;
-			print ("activated");
+//			print ("activated");
 			transform.rotation = Quaternion.LookRotation (towardsTarget);
 			if(towardsTarget.sqrMagnitude > 40) {
 				if(towardsTarget.sqrMagnitude > slowDownDistance){
