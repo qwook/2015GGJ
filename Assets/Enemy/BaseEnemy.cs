@@ -59,9 +59,6 @@ public class BaseEnemy : MonoBehaviour {
 				target = targets[i];
 			}
 		}
-		
-		float verticalAmount = 0f;
-		float horizontalAmount = 0f;
 
 		Vector3 towardsTarget = -(this.transform.position - target.transform.position);
 

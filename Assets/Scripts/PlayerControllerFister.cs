@@ -1,10 +1,13 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class PlayerControllerFister : MonoBehaviour {
 	
 	public Camera camera;
 	public float points;
+
+	
 	
 
 	//input 
@@ -28,6 +31,8 @@ public class PlayerControllerFister : MonoBehaviour {
 
 	private Animator animator;
 
+	public Text text;
+
 
 
 
@@ -40,6 +45,7 @@ public class PlayerControllerFister : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		animator = GetComponent<Animator>();
+//		text = GetComponent<Text>();
 
 	}
 	
@@ -146,7 +152,13 @@ public class PlayerControllerFister : MonoBehaviour {
 	}
 
 	public void addPoints(float moarPoints) {
+
 		this.points += moarPoints;
+		string temp = text.text;
+		float num = float.Parse (temp);
+		print (num);
+
+		text.text = ((int)(num + moarPoints)) + "";
 
 	}
 

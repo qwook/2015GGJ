@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class CameraController : MonoBehaviour {
@@ -14,6 +15,7 @@ public class CameraController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 //		this.transform.localPosition = initialPosition;
+
 	}
 	
 	// Update is called once per frame
