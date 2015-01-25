@@ -73,7 +73,10 @@ public class TestPlayerAnimation : MonoBehaviour {
 		}
 
 		Animator animator = GetComponent<Animator>();
-		animator.SetFloat ("Speed", (forwardSpeed + sideSpeed));
+
+		animator.SetFloat ("Speed", forwardSpeed);
+		animator.SetBool ("Punch", Input.GetKey ("g"));
+		animator.SetBool ("Punch2", Input.GetKey ("h"));
 
 		CharacterController characterController = GetComponent<CharacterController> ();
 		gravity = Physics.gravity * Time.fixedDeltaTime;
