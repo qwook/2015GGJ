@@ -118,16 +118,21 @@ public class BaseEnemy : MonoBehaviour {
 		RaycastHit hit;;
 		Vector3 direction = transform.rotation * Vector3.forward;
 		int mask = 1 << 9;
-//		print (direction + " " + direction);
 		Debug.DrawRay(transform.position + punchHeight, direction * punchLength, Color.green, 3f);
-		if (Physics.Raycast (transform.position + punchHeight, direction, out hit, punchLength, mask)) {
+		if (Physics.SphereCast (transform.position + punchHeight, 3, direction, out hit, punchLength, mask)) {
 			
-			print ("hit");		
+			Damagable damage = hit.collider.gameObject.GetComponent<Damagable> ();
+			PlayerControllerFister player = hit.collider.gameObject.GetComponent<PlayerControllerFister> ();
+			player.subtractPoints(damage.dealDamage(100));
+			if(damage.dead) {
+				hit.collider.enabled = false;
+				print (hit.collider.gameObject.tag);
+				hit.collider.gameObject.tag = "Untagged";
+			}
+			return true;
 		} else {
-			print ("didn't hit");
+			return false;
 		}
-		//		print (hit);
-		return true;
 	}
 	
 	private void updateTimers() {

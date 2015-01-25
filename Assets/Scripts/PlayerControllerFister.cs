@@ -5,9 +5,11 @@ using System.Collections;
 public class PlayerControllerFister : MonoBehaviour {
 	
 	public Camera camera;
+
+	//to update point system (Definitely needs fixing);
+	public Text text;
 	public float points;
 
-	
 	
 
 	//input 
@@ -19,7 +21,6 @@ public class PlayerControllerFister : MonoBehaviour {
 	//cooldown between hits
 	public float coolDownTimeOne;
 	public float coolDownTimeTwo;
-	
 
 	//how far in front should we detect collision
 	public float punchLength;
@@ -28,15 +29,10 @@ public class PlayerControllerFister : MonoBehaviour {
 	private float coolDownOneTimer;
 	private float coolDownTwoTimer;
 
-
 	private Animator animator;
 
-	public Text text;
 
 
-
-
-	
 	
 	float forwardSpeed = 0.0f;
 	float sideSpeed = 0.0f;
@@ -167,6 +163,12 @@ public class PlayerControllerFister : MonoBehaviour {
 
 	public void subtractPoints( float lessPoints) {
 
+		this.points -= lessPoints;
+		string temp = text.text;
+		float num = float.Parse (temp);
+		print (num);
+		
+		text.text = ((int)(this.points)) + "";
 
 	}
 	public float getPoints() {
