@@ -18,10 +18,21 @@ public class CameraController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Vector3 max = ((P1.transform.localPosition.z > P2.transform.localPosition.z) ? P1.transform.localPosition : P2.transform.localPosition);
-	
+
+		Vector3 max;
+		Animator speed;
+
+		if (P1.transform.localPosition.z > P2.transform.localPosition.z) {
+			max = P1.transform.localPosition;
+			speed = P1.GetComponent<Animator> ();
+		} else {
+			max = P2.transform.localPosition;
+			speed = P2.GetComponent<Animator> ();
+		}
+		print(speed.speed);
+
 		if (max.z >= this.transform.localPosition.z + 15) {
-			Vector3 newPos = new Vector3 (0f, 0f, cameraSpeed);
+			Vector3 newPos = new Vector3 (0f, 0f, speed.speed * cameraSpeed);
 			this.transform.localPosition += newPos;		
 		}
 

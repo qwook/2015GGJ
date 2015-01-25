@@ -52,7 +52,7 @@ AnimatorController:
   - serializedVersion: 3
     m_Name: Legs
     m_StateMachine: {fileID: 110785852}
-    m_Mask: {fileID: 101100000, guid: 75c1bfd19b43748a19c288d0e70e500e, type: 2}
+    m_Mask: {fileID: 0}
     m_BlendingMode: 0
     m_SyncedLayerIndex: -1
     m_StateMachineMotionSetIndex: 0
@@ -577,18 +577,18 @@ StateMachine:
   m_ChildStateMachinePosition: []
   m_OrderedTransitions:
     data:
-      first: {fileID: 110296912}
+      first: {fileID: 110237808}
       second:
-      - {fileID: 110142344}
-      - {fileID: 110155272}
+      - {fileID: 110158402}
     data:
       first: {fileID: 110263948}
       second:
       - {fileID: 110127900}
     data:
-      first: {fileID: 110237808}
+      first: {fileID: 110296912}
       second:
-      - {fileID: 110158402}
+      - {fileID: 110142344}
+      - {fileID: 110155272}
   m_MotionSetCount: 1
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
