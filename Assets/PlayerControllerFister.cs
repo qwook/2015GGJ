@@ -21,6 +21,7 @@ public class PlayerControllerFister : MonoBehaviour {
 
 	//how far in front should we detect collision
 	public float punchLength;
+	public Vector3 punchHeight;
 
 	private float coolDownOneTimer;
 	private float coolDownTwoTimer;
@@ -48,7 +49,6 @@ public class PlayerControllerFister : MonoBehaviour {
 		float horizontalAmount = -Input.GetAxis (verticalAxis);
 
 		if (verticalAmount != 0 || horizontalAmount != 0) {
-			print (verticalAmount + " " + horizontalAmount);
 			transform.rotation = Quaternion.LookRotation (((Vector3.forward * verticalAmount)+(Vector3.right * horizontalAmount)));
 		}
 
@@ -81,7 +81,10 @@ public class PlayerControllerFister : MonoBehaviour {
 		}
 		
 		Animator animator = GetComponent<Animator>();
+		print (forwardSpeed + " " + sideSpeed);
 		animator.SetFloat ("Speed", (forwardSpeed + sideSpeed));
+
+//		transform.forward += Vector3.forward * (forwardSpeed);
 		
 		CharacterController characterController = GetComponent<CharacterController> ();
 		gravity = Physics.gravity * Time.fixedDeltaTime;
@@ -123,7 +126,15 @@ public class PlayerControllerFister : MonoBehaviour {
 		RaycastHit hit;;
 		Vector3 direction = transform.rotation.eulerAngles.normalized;
 		int mask = 1 << 8;
-		Physics.Raycast(transform.localPosition, direction, out hit, punchLength, mask);
+//		print (direction + " " + punchLength);
+		Debug.DrawRay(transform.position + punchHeight, direction * punchLength, Color.red, 3f);
+		if (Physics.Raycast (transform.position, direction, out hit, punchLength, mask)) {
+
+//			print ("hit");		
+		} else {
+//			print ("didn't hit");
+		}
+//		print (hit);
 		return true;
 	}
 
