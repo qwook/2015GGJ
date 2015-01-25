@@ -25,7 +25,7 @@ public class Damagable : MonoBehaviour
 			print("destroy");
 			return points;
 		} else {
-			animator.SetBool ("Hit", true);
+			animator.SetTrigger ("Hit");
 			print ("hit");
 			return 0;
 		} 

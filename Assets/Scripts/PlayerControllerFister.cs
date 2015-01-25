@@ -139,10 +139,13 @@ public class PlayerControllerFister : MonoBehaviour {
 		Debug.DrawRay(transform.position + punchHeight, direction * punchLength, Color.red, 3f);
 		;
 
-		if (Physics.SphereCast (transform.position + punchHeight, 10, direction, out hit, punchLength, mask)) {
+		if (Physics.SphereCast (transform.position + punchHeight, 3, direction, out hit, punchLength, mask)) {
 
 			Damagable damage = hit.collider.gameObject.GetComponent<Damagable> ();
 			addPoints(damage.dealDamage(100));
+			if(damage.dead) {
+				hit.collider.enabled = false;
+			}
 			return true;
 		} else {
 			return false;
