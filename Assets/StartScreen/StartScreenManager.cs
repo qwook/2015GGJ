@@ -11,8 +11,8 @@ public class StartScreenManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown ("Action1")) {
-					
+		if (Input.GetKeyDown ("space")) {
+			Application.LoadLevel("Scene_W");		
 		}
 	}
 }

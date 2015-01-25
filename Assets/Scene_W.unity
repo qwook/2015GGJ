@@ -917,7 +917,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8448c5063ec947ec85aaa889d30b119, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialPosition: {x: 0, y: 5, z: 10}
+  initialPosition: {x: 10, y: 20, z: 1}
   P1: {fileID: 854635435}
   P2: {fileID: 1891552294}
   isFollowing: 0
@@ -960,7 +960,7 @@ Camera:
     height: 1
   near clip plane: .300000012
   far clip plane: 1000
-  field of view: 60
+  field of view: 52
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -980,8 +980,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1893590991}
-  m_LocalRotation: {x: .173648223, y: 0, z: 0, w: .984807789}
-  m_LocalPosition: {x: 3, y: 10, z: 1}
+  m_LocalRotation: {x: .330366135, y: -.243210375, z: .0885213464, w: .907673359}
+  m_LocalPosition: {x: 10, y: 20, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

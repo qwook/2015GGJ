@@ -131,14 +131,17 @@ public AnimationClip jumpPoseAnimation;
 		bool grounded = IsGrounded();
 
 		// Forward vector relative to the camera along the x-z plane   
-		Vector3 forward= cameraTransform.TransformDirection(Vector3.forward);
-		forward.y = 0;
-		forward = forward.normalized;
+//		Vector3 forward= cameraTransform.TransformDirection(Vector3.forward);
+//		forward.y = 0;
+//		forward = forward.normalized;
+
+		Vector3 forward = new Vector3(-0.25f,0f,1f);
 		
 		// Right vector relative to the camera
 		// Always orthogonal to the forward vector
-		Vector3 right= new Vector3(forward.z, 0, -forward.x);
-		
+//		Vector3 right= new Vector3(forward.z, 0, -forward.x);
+		Vector3 right= new Vector3(0.5f,0f,0.5f);
+
 		float v= Input.GetAxisRaw(verticalInput);
 		float h= Input.GetAxisRaw(horizontalInput);
 		
@@ -191,21 +194,21 @@ public AnimationClip jumpPoseAnimation;
 			_characterState = CharacterState.Idle;
 			
 			// Pick speed modifier
-			if (Input.GetKey (KeyCode.LeftShift) || Input.GetKey (KeyCode.RightShift))
-			{
+//			if (Input.GetKey (KeyCode.LeftShift) || Input.GetKey (KeyCode.RightShift))
+//			{
 				targetSpeed *= runSpeed;
 				_characterState = CharacterState.Running;
-			}
-			else if (Time.time - trotAfterSeconds > walkTimeStart)
-			{
-				targetSpeed *= trotSpeed;
-				_characterState = CharacterState.Trotting;
-			}
-			else
-			{
-				targetSpeed *= walkSpeed;
-				_characterState = CharacterState.Walking;
-			}
+//			}
+//			else if (Time.time - trotAfterSeconds > walkTimeStart)
+//			{
+//				targetSpeed *= trotSpeed;
+//				_characterState = CharacterState.Trotting;
+//			}
+//			else
+//			{
+//				targetSpeed *= walkSpeed;
+//				_characterState = CharacterState.Walking;
+//			}
 			
 			moveSpeed = Mathf.Lerp(moveSpeed, targetSpeed, curSmooth);
 			
