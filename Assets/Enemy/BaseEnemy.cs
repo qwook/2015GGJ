@@ -28,7 +28,7 @@ public class BaseEnemy : MonoBehaviour {
 	
 	
 	private GameObject[] targets;
-	private GameObject target;
+	private GameObject target = null;
 	
 	
 	
@@ -48,17 +48,27 @@ public class BaseEnemy : MonoBehaviour {
 		if (GetComponent<Damagable> ().dead) { return; }
 		targets = GameObject.FindGameObjectsWithTag ("Player");
 
-		if (targets.Length >= 1) {
-			target = targets[0];
-		} else {
-			return;
-		}
-		for (int i = 1; i < targets.Length; i++) {	
-			
-			if((this.transform.position - targets[i].transform.position).sqrMagnitude > (this.transform.position - target.transform.position).sqrMagnitude) {
-				target = targets[i];
+		if (target == null || Vector3.Distance(transform.position, target.transform.position) > activateDistance) {
+			foreach (GameObject _target in targets) {
+				if (target == null) {
+					target = _target;
+				} else if (Vector3.Distance(transform.position, _target.transform.position) < Vector3.Distance(transform.position, target.transform.position)) {
+					target = _target;
+				}
 			}
 		}
+
+//		if (targets.Length >= 1) {
+//			target = targets[0];
+//		} else {
+//			return;
+//		}
+//		for (int i = 1; i < targets.Length; i++) {	
+//			
+//			if((this.transform.position - targets[i].transform.position).sqrMagnitude > (this.transform.position - target.transform.position).sqrMagnitude) {
+//				target = targets[i];
+//			}
+//		}
 
 		Vector3 towardsTarget = -(this.transform.position - target.transform.position);
 
@@ -115,10 +125,10 @@ public class BaseEnemy : MonoBehaviour {
 	
 	
 	bool traceHit() {
-		RaycastHit hit;;
+		RaycastHit hit;
 		Vector3 direction = transform.rotation * Vector3.forward;
 		int mask = 1 << 9;
-		Debug.DrawRay(transform.position + punchHeight, direction * punchLength, Color.green, 3f);
+//		Debug.DrawRay(transform.position + punchHeight, direction * punchLength, Color.green, 3f);
 		if (Physics.SphereCast (transform.position + punchHeight, 3, direction, out hit, punchLength, mask)) {
 			
 			Damagable damage = hit.collider.gameObject.GetComponent<Damagable> ();

@@ -132,8 +132,8 @@ public class PlayerControllerFister : MonoBehaviour {
 		Vector3 direction = transform.rotation * Vector3.forward;
 		int mask = 1 << 8;
 //		print (direction + " " + direction);
-		Debug.DrawRay(transform.position + punchHeight, direction * punchLength, Color.red, 3f);
-		;
+//		Debug.DrawRay(transform.position + punchHeight, direction * punchLength, Color.red, 3f);
+
 
 		if (Physics.SphereCast (transform.position + punchHeight, 3, direction, out hit, punchLength, mask)) {
 

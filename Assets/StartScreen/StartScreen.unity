@@ -2434,7 +2434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aacbc555c505544b095a31e80bb918db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneToLoad: Level1
+  SceneToLoad: IntroCutScene
   flashing: 1
   text: {fileID: 2089197393}
 --- !u!4 &2054989641

@@ -10,4 +10,8 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scene_W.unity
   - enabled: 1
+    path: Assets/StartScreen/StartScreen.unity
+  - enabled: 1
+    path: Assets/IntroCutScene.unity
+  - enabled: 1
     path: Assets/Level1.unity
